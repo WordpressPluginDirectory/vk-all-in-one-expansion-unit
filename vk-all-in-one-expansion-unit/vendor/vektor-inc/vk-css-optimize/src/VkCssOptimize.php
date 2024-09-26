@@ -5,7 +5,7 @@
  * @package vektor-inc/vk-css-optimize
  * @license GPL-2.0+
  *
- * @version 0.2.2
+ * @version 0.2.5
  */
 
 namespace VektorInc\VK_CSS_Optimize;
@@ -309,6 +309,12 @@ class VkCssOptimize {
 			update_option( 'vk_css_optimize_options', $vk_css_optimize_options );
 		}
 
+		// 0.2.5
+		// VK Blocks 1.85 からテーブルのスクロールヒントのCSSが TreeShaking で正しく処理できず、
+		// その影響で非表示クラスが効かなくなるなどの不具合が発生するため、
+		// 見た目の不具合回避のために応急処置として強制的に TreeShaking を無効化
+		$vk_css_optimize_options['tree_shaking'] = '';
+
 		return $vk_css_optimize_options;
 	}
 
@@ -322,7 +328,7 @@ class VkCssOptimize {
 		// template_redirect が呼ばれる前でのみ実行する .
 		if ( $is_use_themes && did_action( 'template_redirect' ) === 0 ) {
 			// バッファ開始.
-			ob_start( 'self::css_tree_shaking_buffer' );
+			ob_start( array( __CLASS__, 'css_tree_shaking_buffer' ) );
 		}
 		return $is_use_themes;
 	}
@@ -449,6 +455,10 @@ class VkCssOptimize {
 			$buffer
 		);
 
+		// ファイルシステムが ftpext の場合 FTP に接続できないとエラーになるのを回避
+		// $wp_filesystem->link が空の場合に $connect が false になる
+		$connect = 'ftpext' === get_filesystem_method() ? ! empty( $wp_filesystem->link ) : true;
+
 		// CSS Tree Shaking //////////////////////////////////////////// .
 		// まずは $buffer から tree shaking で不要なCSSを削除.
 		if ( ! empty( $vk_css_tree_shaking_array ) && is_array( $vk_css_tree_shaking_array ) ) {
@@ -459,7 +469,7 @@ class VkCssOptimize {
 
 				// 読み込むCSSファイルのパス.
 				$path_name = $vk_css_array['path'];
-				if ( ! empty( $wp_filesystem ) ) {
+				if ( ! empty( $wp_filesystem ) && ! empty( $connect ) ) {
 					$css = $wp_filesystem->get_contents( $path_name );
 				}
 

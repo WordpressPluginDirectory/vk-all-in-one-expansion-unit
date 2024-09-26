@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'vektor-inc/vk-all-in-one-expansion-unit',
-        'pretty_version' => '9.99.4.1',
-        'version' => '9.99.4.1',
-        'reference' => '559de29663bed1f72fab563d2e606995bb339852',
+        'pretty_version' => '9.99.5.1',
+        'version' => '9.99.5.1',
+        'reference' => '44279317c2d2749a8709ba5a949223fec493d903',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'vektor-inc/vk-all-in-one-expansion-unit' => array(
-            'pretty_version' => '9.99.4.1',
-            'version' => '9.99.4.1',
-            'reference' => '559de29663bed1f72fab563d2e606995bb339852',
+            'pretty_version' => '9.99.5.1',
+            'version' => '9.99.5.1',
+            'reference' => '44279317c2d2749a8709ba5a949223fec493d903',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'vektor-inc/vk-css-optimize' => array(
-            'pretty_version' => '0.2.2',
-            'version' => '0.2.2.0',
-            'reference' => 'a7b2d30b9b54db80e0706c15f9a8005786e35335',
+            'pretty_version' => '0.2.5',
+            'version' => '0.2.5.0',
+            'reference' => '36675e369a72e29564e4b0ba00dec960726d2a34',
             'type' => 'library',
             'install_path' => __DIR__ . '/../vektor-inc/vk-css-optimize',
             'aliases' => array(),
