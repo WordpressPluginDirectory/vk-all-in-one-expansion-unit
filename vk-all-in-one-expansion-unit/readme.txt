@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.2
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 9.99.6.0
+Stable tag: 9.100.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ e.g.
 
 == Changelog ==
 
+= 9.100.0 =
+[ Add setting ][ Category list ] Enable to specify ascending/descending order
+[ Specification Change ][ Twitter widget ] Added "Not recommended" to the name and added a note to the description.
+[ Other ][ Post Type Manager ] Added links to explanatory articles and Vectre from the custom post type settings.
+
 = 9.99.6 =
 [ Bug fix ][ Child Page List ] Fixed an issue related to a PHP error.
 
@@ -102,7 +107,7 @@ e.g.
 
 = 9.99.0 =
 [ Specification Change ][ Page top button ] Add #top on body for pagetop btn
-[ Specification Change ][ Taxonomy Widget ] Add dropdown mode. 
+[ Specification Change ][ Taxonomy Widget ] Add dropdown mode.
 [ Specification Change ] Foce Load JS from footer is abolished.
 [ Fix ] Add a title attribute on Google Tag Manager (noscript)
 [ Bug fix ] Fix XSS of Widgets, CTA, Custom Post Type Manager.
@@ -130,7 +135,7 @@ e.g.
 [ Add setting ][ Post Type Manager ] Add a custom field setting.
 [ Specification Change ][ Post Type Manager ] Change so that "with_front" can be specified as false in permalink settings
 [ Bug Fix ][ SNS ] Fix OGP description on password protected page.
-[ Bug Fix ][ Contact Section ] Fixed an issue where icons do not display when input in <i> tag format. 
+[ Bug Fix ][ Contact Section ] Fixed an issue where icons do not display when input in <i> tag format.
 [ Design Bug Fix ][ Child Page List ] Fixed an issue where a blank space appeared above the excerpt.
 
 = 9.95.0 =
