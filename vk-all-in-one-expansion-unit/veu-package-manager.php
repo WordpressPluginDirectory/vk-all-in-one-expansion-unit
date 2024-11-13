@@ -60,7 +60,7 @@ function veu_package_register( $args ) {
 function veu_package_include() {
 	global $vkExUnit_packages;
 	if ( ! count( $vkExUnit_packages ) || ! is_array( $vkExUnit_packages ) ) {
-		return $output; }
+		return; }
 	$options      = veu_get_common_options();
 	$include_base = VEU_DIRECTORY_PATH . '/inc/';
 
@@ -85,7 +85,7 @@ function veu_package_include() {
 	if ( $use_ex_blocks ) {
 		add_action(
 			'init',
-			function() {
+			function () {
 				// WordPress 6.5 以下の対策
 				if ( ! wp_script_is( 'react-jsx-runtime', 'registered' ) ) {
 					wp_register_script(
