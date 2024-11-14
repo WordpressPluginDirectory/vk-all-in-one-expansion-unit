@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.3
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.100.3.2
+Stable tag: 9.100.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,12 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.100.5 =
+[ Bug Fix ][ CSS Customize ] Fixed an issue where CSS customizations( ExUnit > CSS Customize ) were not applied.
+
+= 9.100.4 =
+[ Bug Fix ] Fixed a PHP error that occurs when the activation settings have never been saved.
 
 = 9.100.3 =
 [ Bug Fix ][ CSS Customize ] Fixed an issue where CSS customizations were not applied on single page.
