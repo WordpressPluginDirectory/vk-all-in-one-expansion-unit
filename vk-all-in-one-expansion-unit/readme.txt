@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.3
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 9.100.6.1
+Stable tag: 9.100.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,13 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.100.8 =
+[ Bud Fix ][ Taxonomy Widget / Post Type Manager ] Fix Translate Text Domain.
+[ Bug Fix ][ CSS Customize ] Fix PHP warning on the settings screen of Contact Form 7. 
+
+= 9.100.7 =
+[ Bug fix ][ Categories/Custom taxonomies list widget ] Display order translation
 
 = 9.100.6 =
 [ Bug Fix ][ Loop before widget area ] Fixed an issue where widgets placed in the "Loop Before Widget Area" were not displaying correctly.
