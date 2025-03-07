@@ -11,14 +11,20 @@
     margin-bottom: 1.5em;
     ul {
         display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		padding: 0;
+		margin: 0 0 3px 0;
+		list-style: none;
     }
     li {
-        width: 50%;
+        flex: 1 1 135px;
         background: none;
         position: relative;
         display: block;
         overflow: visible;
         box-sizing: border-box;
+        margin: 0;
     }
     .sb_icon {
         .sb_icon_inner {
@@ -35,7 +41,7 @@
             text-align: left;
             border:none;
             &:hover {
-                box-shadow: none;
+                box-shadow: none !important;
                 transform: translateY(2px);
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
@@ -53,10 +59,11 @@
             }
         }
     }
-    // iframe {
-    //     border: none;
-    // }
     .sb_facebook a {
+        background: #1877f2;
+        box-shadow: 0 2px 0 rgb(52, 78, 132);
+    }
+    .sb_bluesky a {
         background: #1877f2;
         box-shadow: 0 2px 0 rgb(52, 78, 132);
     }
@@ -107,12 +114,6 @@
 
 @media (max-width: 767px) {
     .veu_socialSet {
-        ul {
-            flex-wrap: wrap;
-        }
-        li {
-            width: calc(50% - 6px);
-        }
         .veu_count_sns_pocket,
         .veu_count_sns_fb,
         .veu_count_sns_hb {
@@ -128,15 +129,9 @@
 .veu_socialSet と .veu_contentAddSection ２つつけているのは一つだと .content ul などの継承に負けるため
 */
 .veu_socialSet.veu_contentAddSection ul {
-    margin: 0px;
     padding: 0;
     li {
-        margin: 3px;
-        padding: 0px;
+        padding: 0;
+        margin: 0;
     } //li
-}
-@media (max-width: 767px) {
-    .veu_socialSet.veu_contentAddSection ul li {
-        margin-bottom: 9px;
-    }
 }

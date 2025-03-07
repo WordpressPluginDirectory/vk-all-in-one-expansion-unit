@@ -80,16 +80,21 @@
 <th><label for="enableSnsBtns"><?php _e( 'Social bookmark buttons', 'vk-all-in-one-expansion-unit' ); ?></label></th>
 <td><label><input type="checkbox" name="vkExUnit_sns_options[enableSnsBtns]" id="enableSnsBtns" value="true" <?php echo ( $options['enableSnsBtns'] ) ? 'checked' : ''; ?> /><?php _e( 'Automatic insertion', 'vk-all-in-one-expansion-unit' ); ?></label>
 <p><?php _e( 'Automatically insert social bookmarks (share buttons and tweet buttons) into the body content field or specified action hooks.', 'vk-all-in-one-expansion-unit' ); ?></p>
+
 <dl>
-<dt><?php _e( 'Exclude Post Types', 'vk-all-in-one-expansion-unit' ); ?></dt>
+<dt><?php _e( 'Social button style setting', 'vk-all-in-one-expansion-unit' ); ?></dt>
 <dd>
-<?php
-$args = array(
-	'name'    => 'vkExUnit_sns_options[snsBtn_exclude_post_types]',
-	'checked' => $options['snsBtn_exclude_post_types'],
-);
-vk_the_post_type_check_list( $args );
-?>
+	<label style="margin-bottom: .375rem">
+		<input type="checkbox" name="vkExUnit_sns_options[snsBtn_bg_fill_not]" value="true" <?php echo ( $options['snsBtn_bg_fill_not'] ) ? 'checked' : ''; ?> />
+		<?php _e( 'No background', 'vk-all-in-one-expansion-unit' ); ?>
+	</label>
+	<p>
+		<label><?php _e( 'Btn color', 'vk-all-in-one-expansion-unit' ); ?></label><br>
+		<input type="color" id="snsBtn_color_picker" value="<?php echo esc_attr( $options['snsBtn_color'] ? $options['snsBtn_color'] : '#f6f7f7' ); ?>" />
+		<input type="text" name="vkExUnit_sns_options[snsBtn_color]" id="snsBtn_color" value="<?php echo esc_attr( $options['snsBtn_color'] ); ?>" />
+		<button type="button" id="select_color_btn"><?php _e( 'Select', 'vk-all-in-one-expansion-unit' ); ?></button>
+		<button type="button" id="clear_color_btn"><?php _e( 'Clear', 'vk-all-in-one-expansion-unit' ); ?></button>
+	</p>
 </dd>
 </dl>
 
@@ -132,6 +137,12 @@ if ( $options['useTwitter'] ) {
 	echo 'checked';}
 ?>
 /> <?php _e( 'X', 'vk-all-in-one-expansion-unit' ); ?></label></li>
+<li><label><input type="checkbox" name="vkExUnit_sns_options[useBluesky]" value="true"
+<?php
+if ( $options['useBluesky'] ) {
+	echo 'checked';}
+?>
+/> <?php _e( 'Bluesky', 'vk-all-in-one-expansion-unit' ); ?></label></li>
 <li><label><input type="checkbox" name="vkExUnit_sns_options[useHatena]" value="true"
 <?php
 if ( $options['useHatena'] ) {
@@ -182,19 +193,19 @@ if ( ! empty( $options['snsBtn_position']['after'] ) ) {
 <tr>
 <th><?php _e( 'Entry Count', 'vk-all-in-one-expansion-unit' ); ?></th>
 <td>
-	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="disable" 
+	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="disable"
 	<?php
 	if ( $options['entry_count'] == 'disable' ) {
 		echo 'checked';}
 	?>
 	/><?php _e( 'Disable', 'vk-all-in-one-expansion-unit' ); ?></label><br/>
-	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="get" 
+	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="get"
 	<?php
 	if ( $options['entry_count'] == 'get' ) {
 		echo 'checked';}
 	?>
 	/><?php _e( 'GET (Default)', 'vk-all-in-one-expansion-unit' ); ?></label><br/>
-	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="post" 
+	<label><input type="radio" name="vkExUnit_sns_options[entry_count]" value="post"
 	<?php
 	if ( $options['entry_count'] == 'post' ) {
 		echo 'checked';}
@@ -212,7 +223,7 @@ if ( ! empty( $options['snsBtn_position']['after'] ) ) {
 <?php _e( 'If you want to change the location of share buttons, please enter the action hook name.', 'vk-all-in-one-expansion-unit' ); ?><br>
 <?php _e( 'If you want to multiple display that, input action hook name separated by line breaks.', 'vk-all-in-one-expansion-unit' ); ?><br>
 <?php _e( 'Ex) lightning_comment_before', 'vk-all-in-one-expansion-unit' ); ?>
-</p>	
+</p>
 <textarea name="vkExUnit_sns_options[hook_point]" id="hook_point" style="width:100%;" rows="2"><?php echo esc_html( $options['hook_point'] ); ?></textarea>
 </td>
 </tr>
@@ -230,4 +241,22 @@ if ( ! empty( $options['snsBtn_position']['after'] ) ) {
 </table>
 
 <?php submit_button(); ?>
+
 </div>
+
+<script>
+	// カラーピッカー設定
+	document.getElementById('snsBtn_color_picker').addEventListener('input', function() {
+		document.getElementById('snsBtn_color').value = this.value;
+	});
+	document.getElementById('snsBtn_color').addEventListener('input', function() {
+		document.getElementById('snsBtn_color_picker').value = this.value;
+	});
+	document.getElementById('select_color_btn').addEventListener('click', function() {
+		document.getElementById('snsBtn_color_picker').click();
+	});
+	document.getElementById('clear_color_btn').addEventListener('click', function() {
+		document.getElementById('snsBtn_color_picker').value = '#f6f7f7';
+		document.getElementById('snsBtn_color').value = '';
+	});
+</script>

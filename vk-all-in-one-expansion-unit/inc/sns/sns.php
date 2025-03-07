@@ -81,6 +81,7 @@ function veu_get_sns_options_default() {
 		'followMe_title'              => 'Follow me!',
 		'useFacebook'                 => true,
 		'useTwitter'                  => true,
+		'useBluesky'                  => true,
 		'useHatena'                   => true,
 		'usePocket'                   => true,
 		'useLine'                     => true,
@@ -244,6 +245,7 @@ function vkExUnit_sns_options_validate( $input ) {
 	$output['followMe_title']              = stripslashes( $input['followMe_title'] );
 	$output['useFacebook']                 = ( isset( $input['useFacebook'] ) && $input['useFacebook'] == 'true' );
 	$output['useTwitter']                  = ( isset( $input['useTwitter'] ) && $input['useTwitter'] == 'true' );
+	$output['useBluesky']                  = ( isset( $input['useBluesky'] ) && $input['useBluesky'] == 'true' );
 	$output['useHatena']                   = ( isset( $input['useHatena'] ) && $input['useHatena'] == 'true' );
 	$output['usePocket']                   = ( isset( $input['usePocket'] ) && $input['usePocket'] == 'true' );
 	$output['useCopy']                     = ( isset( $input['useCopy'] ) && $input['useCopy'] == 'true' );
@@ -254,13 +256,11 @@ function vkExUnit_sns_options_validate( $input ) {
 	$output['hook_point'] = str_replace( array( ' ', '　', "\t", "\r\n", "\r", "\n", ',' ), "\n", $output['hook_point'] );
 	$output['hook_point'] = str_replace( "\n\n", "\n", $output['hook_point'] );
 
-	/*
-	SNSボタンの塗りつぶし関連は管理画面に値がないので、カスタマイザーで保存された値を入れる必要がある
-	既に保存されている値をアップデート用にそのまま返すだけなのでサニタイズしていない
-	 */
-	$options_old                  = get_option( 'vkExUnit_sns_options' );
-	$output['snsBtn_bg_fill_not'] = ( ! empty( $options_old['snsBtn_bg_fill_not'] ) ) ? $options_old['snsBtn_bg_fill_not'] : '';
-	$output['snsBtn_color']       = ( ! empty( $options_old['snsBtn_color'] ) ) ? $options_old['snsBtn_color'] : '';
+	$output['snsBtn_bg_fill_not'] = isset( $input['snsBtn_bg_fill_not'] ) ? true : false;
+	$output['snsBtn_color']       = isset( $input['snsBtn_color'] ) ? sanitize_hex_color( $input['snsBtn_color'] ) : '';
+	if ( ! isset( $input['snsBtn_color'] ) || trim( $input['snsBtn_color'] ) === '' ) {
+		$output['snsBtn_color'] = '';
+	}
 
 	return apply_filters( 'vkExUnit_sns_options_validate', $output, $input, $defaults );
 }
@@ -410,4 +410,3 @@ function veu_enqueue_clipboard() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'veu_enqueue_clipboard' );
-
