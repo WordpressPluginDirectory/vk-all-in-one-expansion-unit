@@ -3,9 +3,9 @@ Contributors: vektor-inc,kurudrive,jim912,hideokamoto,nc30,SaoriMiyazaki,catheri
 Donate link:
 Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 9.112.2.1
+Stable tag: 9.113.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,18 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.113.0 =
+[ Bug Fix ] Fix PHP Deprecated.
+[ Specification Change ][ IE Alert ] Delete IE Alert function.
+
+= 9.112.4 =
+[ Bug Fix ][ SNS OGP Title ] Fix XSS.
+[ Bug Fix ][ Custom CSS Single ] Fix backslash removal in custom CSS metabox on save.
+[ Bug Fix ][ CTA ] Fixed an issue where if a CTA was placed using an action hook, even if it was set to hidden for the post type in the main settings, the CTA would still be displayed if it was set to visible for an individual post displayed in the list.
+
+= 9.112.3 =
+[ Bug Fix ][ Custom CSS Single ] Fix can't save css.
 
 = 9.112.2 =
 [ Specification Change ][ Add Reusable block menu ] Change menu name "Manage all reusable blocks" -> "Patterns"

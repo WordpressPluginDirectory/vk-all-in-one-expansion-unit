@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit091e99dcb898294625a8545f960b6166
 {
     public static $prefixLengthsPsr4 = array (
-        'V' => 
+        'V' =>
         array (
             'VektorInc\\VK_Term_Color\\' => 24,
             'VektorInc\\VK_Helpers\\' => 21,
@@ -19,27 +19,27 @@ class ComposerStaticInit091e99dcb898294625a8545f960b6166
     );
 
     public static $prefixDirsPsr4 = array (
-        'VektorInc\\VK_Term_Color\\' => 
+        'VektorInc\\VK_Term_Color\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-term-color/src',
         ),
-        'VektorInc\\VK_Helpers\\' => 
+        'VektorInc\\VK_Helpers\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-helpers/src',
         ),
-        'VektorInc\\VK_Font_Awesome_Versions\\' => 
+        'VektorInc\\VK_Font_Awesome_Versions\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/font-awesome-versions/src',
         ),
-        'VektorInc\\VK_CSS_Optimize\\' => 
+        'VektorInc\\VK_CSS_Optimize\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-css-optimize/src',
         ),
-        'VektorInc\\VK_Breadcrumb\\' => 
+        'VektorInc\\VK_Breadcrumb\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-breadcrumb/src',
         ),
-        'VektorInc\\VK_Admin\\' => 
+        'VektorInc\\VK_Admin\\' =>
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-admin/src',
         ),

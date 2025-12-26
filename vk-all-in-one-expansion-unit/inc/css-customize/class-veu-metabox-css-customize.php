@@ -48,7 +48,7 @@ class VEU_Metabox_CSS_Customize extends VEU_Metabox {
 		$nonce_key   = 'noncename__' . $this->args['cf_name'];
 		$nonce_value = isset( $_POST[ $nonce_key ] ) ? $_POST[ $nonce_key ] : null;
 
-		if ( ! wp_verify_nonce( $nonce_value, __FILE__ ) ) {
+		if ( ! wp_verify_nonce( $nonce_value, $this->nonce_action ) ) {
 			return $post_id;
 		}
 
@@ -58,7 +58,7 @@ class VEU_Metabox_CSS_Customize extends VEU_Metabox {
 			return $post_id;
 		}
 
-		$raw_css       = wp_unslash( $_POST[ $this->args['cf_name'] ] );
+		$raw_css       = $_POST[ $this->args['cf_name'] ];
 		$sanitized_css = veu_sanitize_custom_css_input( $raw_css );
 		if ( '' !== $sanitized_css ) {
 			add_post_meta( $post_id, $this->args['cf_name'], $sanitized_css );

@@ -453,6 +453,7 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 				}
 			}
 
+			// 表示するCTAのIDが指定されていない場合は空を返す.
 			if ( ! $id ) {
 				return '';
 			}
@@ -504,9 +505,15 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 			return $return;
 		}
 
+		/**
+		 * 表示するCTAのIDを取得
+		 *
+		 * @param int $id 表示先のページの投稿のID
+		 * @return int|null 表示するCTAのID。CTAを表示しない場合は null を返す。
+		 */
 		public static function is_cta_id( $id = null ) {
 
-			// 表示する投稿のIDを取得
+			// CTAを表示する先の投稿のIDを取得
 			if ( ! $id ) {
 				$id = get_the_id(); }
 			// ?
@@ -515,6 +522,19 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 
 			// 各投稿編集画面で プルダウンで指定されている 表示するCTAの投稿ID（もしくは共通設定や非表示）
 			$post_config = get_post_meta( $id, 'vkexunit_cta_each_option', true );
+
+			// アーカイブなどの複数投稿表示時はメイン設定で非表示指定されている場合はCTAを無効化.
+			// 個別ページじゃない場合
+			if ( ! is_singular() ) {
+				// 投稿タイプを取得
+				$post_type = get_post_type( $id );
+				if ( $post_type ) {
+					$option = self::get_option();
+					if ( isset( $option[ $post_type ] ) && in_array( $option[ $post_type ], array( '0', 0 ), true ) ) {
+						return null;
+					}
+				}
+			}
 
 			// 「共通設定を使用」じゃなかった場合
 			if ( $post_config ) {
