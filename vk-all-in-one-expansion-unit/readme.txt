@@ -5,7 +5,6 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 9.113.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +79,11 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.113.6 =
+[ Specification Change ] Update vektor-inc/font-awesome-versions from 0.7.0 to 0.7.2
+[ Specification Change ] Update vektor-inc/vk-admin from 0.4.1 to 0.5.0
+[ Specification Change ] Update vektor-inc/vk-term-color from 0.1.0 to 0.7.1
 
 = 9.113.5 =
 [ Bug Fix ] Fix array-type custom fields (e.g. veu_head_title) not being saved due to the SNS title XSS fix.
