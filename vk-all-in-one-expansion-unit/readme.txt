@@ -5,6 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
+Stable tag: 9.114.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +80,12 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.114.0 =
+[ Spec Change ] Migrate post editor settings UI to block editor sidebar panels
+[ Bug Fix ] Fixed binary files (images, fonts, etc.) being corrupted during dist process
+[ Bug Fix ] Fixed block editor sidebar panels not appearing on sites installed from the dist zip because the build/ directory was excluded from the dist package.
+[ Other ] Replace htmlspecialchars() with sanitize_text_field( wp_unslash() ) for $_POST input sanitization in save_post handlers.
 
 = 9.113.6 =
 [ Specification Change ] Update vektor-inc/font-awesome-versions from 0.7.0 to 0.7.2

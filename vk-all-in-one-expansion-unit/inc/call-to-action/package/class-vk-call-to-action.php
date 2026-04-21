@@ -109,7 +109,7 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 				'has_archive'        => false,
 				'hierarchical'       => false,
 				'taxonomies'         => array(),
-				'supports'           => array( 'title', 'editor' ),
+				'supports'           => array( 'title', 'editor', 'custom-fields' ),
 				'show_in_rest'       => true,
 			);
 			register_post_type( self::POST_TYPE, $args );
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 		public static function add_metabox_cta_register() {
 
 			// Meta box of CTA edit and register page.
-			add_meta_box( 'vkExUnit_cta_url', __( 'CTA Contents', 'vk-all-in-one-expansion-unit' ), array( __CLASS__, 'render_meta_box_cta' ), self::POST_TYPE, 'normal', 'high' );
+			add_meta_box( 'vkExUnit_cta_url', __( 'CTA Contents', 'vk-all-in-one-expansion-unit' ), array( __CLASS__, 'render_meta_box_cta' ), self::POST_TYPE, 'normal', 'high', array( '__back_compat_meta_box' => true ) );
 		}
 
 
@@ -136,7 +136,7 @@ if ( ! class_exists( 'Vk_Call_To_Action' ) ) {
 		public static function save_custom_field( $post_id ) {
 			if ( ! isset( $_POST['_vkExUnit_cta_switch'] ) ) {
 				return $post_id; }
-			$noonce = isset( $_POST['_nonce_vkExUnit_custom_cta'] ) ? htmlspecialchars( $_POST['_nonce_vkExUnit_custom_cta'] ) : null;
+			$noonce = isset( $_POST['_nonce_vkExUnit_custom_cta'] ) ? sanitize_text_field( wp_unslash( $_POST['_nonce_vkExUnit_custom_cta'] ) ) : null;
 
 			// if autosave is to deny.
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
