@@ -3,9 +3,9 @@ Contributors: vektor-inc,kurudrive,jim912,hideokamoto,nc30,SaoriMiyazaki,catheri
 Donate link:
 Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.5
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 9.117.0
+Stable tag: 9.117.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.117.1 =
+[ Bug Fix ] Removed an unnecessary veu_get_common_options() call in vwu_register_css() that could trigger a "Call to undefined function" fatal error when the enqueue hooks ran before the packages were loaded in some environments.
 
 = 9.117.0 =
 [ Feature ][ Page Top Button ] Added "Width" and "Height" settings (in pixels) so users can resize the page top button image from the main setting page and the Customizer. The default 40 x 38 px size is preserved when either value is left blank.
