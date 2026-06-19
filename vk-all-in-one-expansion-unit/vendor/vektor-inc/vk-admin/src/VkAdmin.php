@@ -5,14 +5,14 @@
  * @package vektor-inc/vk-admin
  * @license GPL-2.0+
  *
- * @version 0.5.1
+ * @version 0.8.1
  */
 
 namespace VektorInc\VK_Admin;
 
 class VkAdmin {
 
-	public static $version = '0.5.1';
+	public static $version = '0.8.1';
 
 	public static function init() {
 		$locale = ( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale();
@@ -428,19 +428,34 @@ class VkAdmin {
 			<?php if ( $get_layout == 'column_2' ) : ?>
 				<div class="pageLogo"><?php echo $get_logo_html; ?></div>
 				<?php if ( $get_page_title ) : ?>
-					<h1 class="page_title"><?php echo $get_page_title; ?></h1>
+					<h1 class="page_title"><?php echo wp_kses_post( $get_page_title ); ?></h1>
 				<?php endif; ?>
 			<?php endif; ?>
 
+			<?php
+			/*
+			 * Hidden marker for WordPress admin notices.
+			 * WordPress core (wp-admin/js/common.js) moves admin notices to just
+			 * after `.wp-header-end`. Without this marker, the column_3 layout has no
+			 * h1, so notices get inserted after the first heading inside the sidebar
+			 * (the h2.page_title), pushing the navigation off-screen. Placing this
+			 * marker above `.adminLayout` makes notices appear at the top of the page
+			 * (in the main area) for every layout, keeping the sidebar navigation
+			 * visible. For column_2 the marker sits right after the h1, so the notice
+			 * position is identical to before (no change).
+			 */
+			?>
+			<hr class="wp-header-end" />
+
 			<div class="adminLayout">
-				<div class="adminMain <?php echo $get_layout; ?>">
+				<div class="adminMain <?php echo esc_attr( $get_layout ); ?>">
 
 					<?php if ( $get_layout == 'column_3' ) : ?>
 						<div id="adminContent_sub" class="scrTracking adminMain_sub">
 							<div class="adminMain_sub_inner">
 								<div class="pageLogo"><?php echo $get_logo_html; ?></div>
 								<?php if ( $get_page_title ) : ?>
-								<h2 class="page_title"><?php echo $get_page_title; ?></h2>
+								<h2 class="page_title"><?php echo wp_kses_post( $get_page_title ); ?></h2>
 								<?php endif; ?>
 								<div class="vk_option_nav">
 									<ul>
@@ -464,4 +479,3 @@ class VkAdmin {
 		<?php
 	}
 }
-
